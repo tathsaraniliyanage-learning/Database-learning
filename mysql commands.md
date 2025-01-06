@@ -277,3 +277,64 @@ how many orders each customer has placed
 select cust_id,count(cust_id) from orders group by cust_id;
 
 
+
+
+
+join queries
+
+join customer and order table
+select * from customer join orders on customer.cust_id = orders.cust_id;
+
+join orders and order_detail table
+select * from orders join order_detail on orders.id= order_detail.order_id;
+
+join customer , order , order_detail tables
+
+select * from customer c
+join orders o
+on c.cust_id=o.cust_id
+join order_detail od
+on o.o_id=od.order_id;
+
+
+union
+
+select name from customer
+union
+select date from orders;
+
+
+join customer and order table
+
+select c.cust_id, c.name, c.email,c.age
+from customer c
+left join orders o
+on c.cust_id=o.cust_id;
+
+
+in inner join, match between values.
+in outer join, match between a value and a table.
+
+
+
+create a table named orders_archieved with all the records from orders table.(create an table and get from another table data to this table)
+
+create table orders_archieved as select * from orders;
+
+
+create the new table named order_description with the following values.
+(order_id , date, cust_name , description onhand of the item)
+
+create table order_description as
+select od.order_id , 0.date, c.name,i.description
+from customer c
+join orders o
+on c.cust_id =0.cust_id;
+join order_detail od
+on o.id= od.order_id
+join item
+on od.item_code= i.item_code;
+
+
+
+
